@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affiliate Program - Vodiči i predlošci za AI promptove</title>
+    <meta name="description" content="Postani affiliate partner i zarađuj 20% provizije. Detaljne informacije, uvjeti, marketing materijali i FAQ.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --accent: #ec4899;
+            --dark-bg: #0f172a;
+            --dark-card: #1e293b;
+            --dark-border: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --success: #10b981;
+            --gradient-1: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+            --gradient-2: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--dark-border);
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            cursor: pointer;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        nav .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            nav .nav-links {
+                display: none;
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-2);
+            position: relative;
+            overflow: hidden;
+            padding: 3rem 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--gradient-1);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 0;
+            background: var(--dark-bg);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+
+        .faq-item {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            background: var(--dark-card);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .faq-toggle {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            border-radius: 50%;
+            color: white;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 400px;
+        }
+
+        .faq-answer-content {
+            padding: 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Terms Section */
+        .terms-list {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .terms-list h4 {
+            color: var(--primary);
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .terms-list p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .terms-list ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .terms-list li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .terms-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.05) 100%);
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .cta-section p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-card);
+            border-top: 1px solid var(--dark-border);
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        footer h4 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer ul li a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--dark-border);
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                margin-top: 60px;
+                min-height: auto;
+                padding: 2rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            nav .container {
+                padding: 0 1rem;
+            }
+
+            nav .logo {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card, .faq-item {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo" onclick="window.location.href='prodajna-stranica.html'" style="cursor: pointer;">AI Promptovi</div>
+            <ul class="nav-links">
+                <li><a href="#kako-funkcionira">Kako funkcionira</a></li>
+                <li><a href="#uvjeti">Uvjeti</a></li>
+                <li><a href="#marketing">Marketing materijali</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="prodajna-stranica.html">Nazad na stranicu</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Postani Affiliate Partner</h1>
+            <p>Zarađuj 20% provizije za svaku prodaju e-booka "Vodiči i predlošci za AI promptove"</p>
+            <button class="cta-button" onclick="alert('Hvala na interesu! Prijava će biti dostupna uskoro.')">Prijavi se kao affiliate partner</button>
+        </div>
+    </section>
+
+    <!-- Kako Funkcionira -->
+    <section class="section" id="kako-funkcionira">
+        <div class="container">
+            <h2 class="section-title">Kako Funkcionira Affiliate Program?</h2>
+            <p class="section-subtitle">Jednostavno, transparentno i profitabilno</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3>1. Prijava</h3>
+                    <p>Prijavi se na affiliate program popunjavanjem jednostavne forme. Trebat će ti samo osnovne informacije o tebi i tvojoj publici.</p>
+                </div>
+                <div class="card">
+                    <h3>2. Dobij Referral Link</h3>
+                    <p>Odmah nakon odobrenja, dobit ćeš svoj jedinstveni referral link koji prati sve tvoje klikove i prodaje.</p>
+                </div>
+                <div class="card">
+                    <h3>3. Promoviranje</h3>
+                    <p>Dijeli svoj link s publikom putem bloga, društvenih mreža, e-maila, YouTube-a, podcasta ili bilo kojeg drugog kanala.</p>
+                </div>
+                <div class="card">
+                    <h3>4. Praćenje</h3>
+                    <p>Prati sve klikove, konverzije i zarađene provizije u realnom vremenu putem affiliate dashboarda.</p>
+                </div>
+                <div class="card">
+                    <h3>5. Zarađivanje</h3>
+                    <p>Zaradjuj proviziju za svaku prodaju ostvarenu putem tvog linka. Nema limita koliko možeš zaraditi!</p>
+                </div>
+                <div class="card">
+                    <h3>6. Isplate</h3>
+                    <p>Primaj redovne mjesečne isplate putem PayPal-a, bankovnog prijenosa ili drugog odabranog načina.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Struktura Provizije -->
+    <section class="section" style="background: linear-gradient(180deg, rgba(99, 102, 241, 0.05) 0%, transparent 100%);">
+        <div class="container">
+            <h2 class="section-title">Struktura Provizije</h2>
+            <p class="section-subtitle">Fiksna provizija od 20% na sve pakete</p>
+
+            <div style="max-width: 800px; margin: 3rem auto 0;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr style="background: rgba(99, 102, 241, 0.1); border-bottom: 2px solid var(--primary);">
+                        <td style="padding: 1.5rem; text-align: left; color: var(--text-primary); font-weight: 600; border-radius: 12px 0 0 0;">Paket</td>
+                        <td style="padding: 1.5rem; text-align: center; color: var(--text-primary); font-weight: 600;">Cijena</td>
+                        <td style="padding: 1.5rem; text-align: center; color: var(--text-primary); font-weight: 600; border-radius: 0 12px 0 0;">Provizija</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--dark-border);">
+                        <td style="padding: 1.5rem; text-align: left; color: var(--text-secondary);">Osnovni paket</td>
+                        <td style="padding: 1.5rem; text-align: center; color: var(--text-secondary);">19.99€</td>
+                        <td style="padding: 1.5rem; text-align: center; color: var(--success); font-weight: 600;">4€ (20%)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--dark-border);">
+                        <td style="padding: 1.5rem; text-align: left; color: var(--text-secondary);">PRO paket</td>
+                        <td style="padding: 1.5rem; text-align: center; color: var(--text-secondary);">49.99€</td>
+                        <td style="padding: 1.5rem; text-align: center; color: var(--success); font-weight: 600;">10€ (20%)</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 1.5rem; text-align: left; color: var(--text-secondary); border-radius: 0 0 0 12px;">VIP/Ultimate paket</td>
+                        <td style="padding: 1.5rem; text-align: center; color: var(--text-secondary);">99.99€</td>
+                        <td style="padding: 1.5rem; text-align: center; color: var(--success); font-weight: 600; border-radius: 0 0 12px 0;">20€ (20%)</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div style="margin-top: 3rem; text-align: center; background: var(--dark-card); padding: 2rem; border-radius: 12px; border: 1px solid var(--dark-border);">
+                <p style="color: var(--text-secondary); font-size: 1.1rem;">Primjer: Ako promoviraš PRO paket i ostvariš 10 prodaja, zarađuješ <span style="color: var(--success); font-weight: 600;">100€</span> (10 × 10€)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Uvjeti Programa -->
+    <section class="section" id="uvjeti">
+        <div class="container">
+            <h2 class="section-title">Uvjeti Programa</h2>
+            <p class="section-subtitle">Što trebam znati prije nego što se prijavim?</p>
+
+            <div class="terms-list">
+                <h4>Tko se može prijaviti?</h4>
+                <p>Affiliate program je otvoren za sve koji imaju vlastitu publiku ili kanale za promociju:</p>
+                <ul>
+                    <li>Blogeri i pisci sadržaja</li>
+                    <li>YouTuberi i content kreatora</li>
+                    <li>Podcaster</li>
+                    <li>Influenceri na društvenim mrežama</li>
+                    <li>Email marketing liste</li>
+                    <li>Vlasnici web stranica i foruma</li>
+                    <li>Svi drugi s publikom zainteresiranom za AI</li>
+                </ul>
+
+                <h4>Minimalni zahtjevi</h4>
+                <ul>
+                    <li>Aktivna publika ili kanali za promociju</li>
+                    <li>Etičan i profesionalan pristup promociji</li>
+                    <li>Poštovanje naših marketing smjernica</li>
+                    <li>Redovita komunikacija s našim timom</li>
+                </ul>
+
+                <h4>Što je zabranjeno?</h4>
+                <ul>
+                    <li>Spam i neovlaštena promocija</li>
+                    <li>Klamavne ili zavaravajuće tvrdnje</li>
+                    <li>Korištenje naših brenda bez dozvole</li>
+                    <li>Prodaja ili dijeljenje referral linkova</li>
+                    <li>Korištenje zabranjenih oglasnih kanala (npr. PPC na našim ključnim riječima)</li>
+                </ul>
+
+                <h4>Praćenje i provizije</h4>
+                <ul>
+                    <li>Sve prodaje se prate putem jedinstvenog referral linka</li>
+                    <li>Provizije se obračunavaju nakon što kupac završi kupnju</li>
+                    <li>Minimalni prag za isplatu je 50€ mjesečno</li>
+                    <li>Isplate se vrše do 15. u mjesecu za prethodni mjesec</li>
+                    <li>Doživotno praćenje - zarađuješ proviziju čak i ako kupac kasnije kupi dodatne pakete</li>
+                </ul>
+
+                <h4>Otkazivanje programa</h4>
+                <p>Bilo koja strana može otkazati sudjelovanje u programu bez razloga, s obavijestom od 30 dana. Sve zarađene provizije će biti isplaćene prema redovnom rasporedu.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketing Materijali -->
+    <section class="section" id="marketing" style="background: linear-gradient(180deg, rgba(236, 72, 153, 0.05) 0%, transparent 100%);">
+        <div class="container">
+            <h2 class="section-title">Marketing Materijali</h2>
+            <p class="section-subtitle">Gotovi resursi za promociju</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3>📝 Email Predlošci</h3>
+                    <p>Gotovi email predlošci koje možeš prilagoditi i poslati svojoj listi. Uključeni su subject liniji, copy i CTA.</p>
+                </div>
+                <div class="card">
+                    <h3>🖼️ Baneri i Grafike</h3>
+                    <p>Profesionalno dizajnirani baneri za web stranice, različitih veličina. Sve je optimizirano za konverzije.</p>
+                </div>
+                <div class="card">
+                    <h3>📱 Društvene Mreže</h3>
+                    <p>Gotovi post predlošci za Instagram, Facebook, LinkedIn i Twitter. Samo dodaj svoj referral link!</p>
+                </div>
+                <div class="card">
+                    <h3>🎥 Video Klipovi</h3>
+                    <p>Kratki video klipovi (15-30 sekundi) koje možeš koristiti na YouTube, TikTok ili Instagramu.</p>
+                </div>
+                <div class="card">
+                    <h3>📄 Landing Page Template</h3>
+                    <p>HTML template za vlastitu landing stranicu s tvojim referral linkom. Potpuno prilagođavajuća.</p>
+                </div>
+                <div class="card">
+                    <h3>📊 Promo Materijali</h3>
+                    <p>Detaljne informacije o e-booku, benefitima, cijenama i svega što trebas za promociju.</p>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h3>Pristup svim materijalima</h3>
+                <p>Svi marketing materijali su dostupni u affiliate dashboardu nakon što se prijaviš. Možeš ih preuzeti i koristiti bez ograničenja!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Često Postavljana Pitanja</h2>
+            <p class="section-subtitle">Odgovori na najčešća pitanja od affiliate partnera</p>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Koliko dugo trebam čekati na odobrenje?</span>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Većina prijava se odobri u roku od 24-48 sati. Ako imaš aktivnu publiku i profesionalan pristup, trebao bi biti odobren brzo. U slučaju kašnjenja, kontaktiraj nas na affiliate@manus.ai.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Kako se prate prodaje?</span>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Svaki affiliate dobija jedinstveni referral link koji sadrži identifikator. Kada kupac klikne na link i kupi e-book, prodaja se automatski pripisuje tebi. Sve je praćeno u realnom vremenu u affiliate dashboardu.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Koliki je rok za isplate?</span>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Isplate se vrše mjesečno, do 15. u mjesecu za sve zarađene provizije iz prethodnog mjeseca. Minimalni prag za isplatu je 50€. Ako nisi dosegao prag, sredstva ostaju na tvom računu za sljedeći mjesec.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Mogu li koristiti PPC oglase?</span>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            PPC oglasi su dozvoljeni, ali s ograničenjima. Zabranjeno je bidati na našim brendiranim ključnim riječima (npr. "Vodiči i predlošci za AI promptove"). Dozvoljeni su oglasi na generičkim ključnim riječima vezanim uz AI i prompt inženjering.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Što ako kupac vrati e-book?</span>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Nudimo 30-dnevnu garanciju povrata novca. Ako kupac traži povrat, provizija će biti odbijena od tvog računa. To je dio našeg pristupa - želimo da budeš motiviran promovirati samo kvalitetan proizvod.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Mogu li promovirati na više kanala?</span>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Apsolutno! Možeš koristiti isti referral link na svim kanalima - blogu, YouTube-u, Instagramu, e-mailu, podcastu, itd. Sve prodaje će biti praćene i pripisane tebi.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Kako se prijaviti?</span>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Klikni na "Prijavi se kao affiliate partner" gumb na ovoj stranici. Popuni jednostavnu formu s osnovnim informacijama o tebi i tvojoj publici. Naš tim će pregledati tvoju prijavu i kontaktirati te u roku od 24-48 sati.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Postoji li limit koliko mogu zaraditi?</span>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Nema limita! Što više prodaja ostvariš, više zarađuješ. Neki od naših top affiliatea zarađuju nekoliko tisuća eura mjesečno. Sve ovisi o tvojoj publici i kako promoviraš.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Mogu li dobiti bonus za posebne performanse?</span>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Da! Imamo posebne bonuse za top performere. Ako ostvariš više od 50 prodaja mjesečno, kontaktiraj nas za mogućnost dodatnog bonusa.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section" style="background: linear-gradient(180deg, rgba(99, 102, 241, 0.05) 0%, transparent 100%);">
+        <div class="container">
+            <div class="cta-section">
+                <h3>Spreman za zarađivanje?</h3>
+                <p>Postani dio naše affiliate mreže i počni zarađivati 20% provizije za svaku prodaju!</p>
+                <button class="cta-button" onclick="alert('Hvala na interesu! Prijava će biti dostupna uskoro.')">Prijavi se sada</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div>
+                <h4>O Affiliate Programu</h4>
+                <p>Naš affiliate program je dizajniran da bude jednostavan, transparentan i profitabilan za sve partnere. Zajedno gradimo zajednicu koja dijeli znanje o AI promptovima.</p>
+            </div>
+            <div>
+                <h4>Brzi Linkovi</h4>
+                <ul>
+                    <li><a href="#kako-funkcionira">Kako funkcionira</a></li>
+                    <li><a href="#uvjeti">Uvjeti</a></li>
+                    <li><a href="#marketing">Marketing materijali</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Kontakt</h4>
+                <ul>
+                    <li><a href="mailto:affiliate@manus.ai">affiliate@manus.ai</a></li>
+                    <li><a href="mailto:support@manus.ai">support@manus.ai</a></li>
+                    <li><a href="prodajna-stranica.html">Nazad na glavnu stranicu</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Manus AI. Sva prava pridržana. | Affiliate Program za Vodiče i predloške za AI promptove</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Smooth Scroll for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .faq-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

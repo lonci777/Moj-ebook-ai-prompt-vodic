@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vodiči i predlošci za AI promptove - Otključajte puni potencijal AI-ja</title>
+    <meta name="description" content="Naučite majstorstvo AI promptova. 3 paketa sa 50+ gotovih predložaka, napredne tehnike, video vodiči. Transformirajte svoj rad s AI-jem.">
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --accent: #ec4899;
+            --dark-bg: #0f172a;
+            --dark-card: #1e293b;
+            --dark-border: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --success: #10b981;
+            --gradient-1: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+            --gradient-2: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--dark-border);
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        nav .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            nav .nav-links {
+                display: none;
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--gradient-1);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .cta-button-secondary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: var(--primary);
+            text-decoration: none;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+
+        .cta-button-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 6rem 0;
+            background: var(--dark-bg);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-card {
+            background: var(--dark-card);
+            border: 2px solid var(--dark-border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.3);
+        }
+
+        .pricing-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .pricing-badge {
+            display: inline-block;
+            background: var(--gradient-1);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-currency {
+            font-size: 1.5rem;
+        }
+
+        .pricing-period {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--dark-border);
+            display: flex;
+            align-items: center;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: bold;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .payment-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .payment-button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .stripe-button {
+            background: var(--gradient-1);
+            color: white;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .stripe-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .paypal-button {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .paypal-button:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Setup Notice */
+        .setup-notice {
+            background: rgba(236, 72, 153, 0.1);
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .setup-notice h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .setup-notice p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .setup-notice code {
+            background: var(--dark-bg);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            color: var(--primary-light);
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-card);
+            border-top: 1px solid var(--dark-border);
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--dark-border);
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                margin-top: 60px;
+                min-height: auto;
+                padding: 3rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-button-secondary {
+                display: block;
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+
+            .pricing {
+                padding: 3rem 0;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            nav .container {
+                padding: 0 1rem;
+            }
+
+            nav .logo {
+                font-size: 1.2rem;
+            }
+
+            .payment-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pricing-card {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .pricing-card:nth-child(1) { animation-delay: 0.1s; }
+        .pricing-card:nth-child(2) { animation-delay: 0.2s; }
+        .pricing-card:nth-child(3) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">AI Promptovi</div>
+            <ul class="nav-links">
+                <li><a href="#pricing">Paketi i Cijena</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Vodiči i Predlošci za AI Promptove – Otključajte Puni Potencijal AI-ja</h1>
+            <p>Prestanite gubiti vrijeme na generičke AI odgovore. Naučite kako postaviti prava pitanja i dobiti izvanredne rezultate – svaki put!</p>
+            <div>
+                <button class="cta-button" onclick="document.getElementById('pricing').scrollIntoView({behavior: 'smooth'})">Preuzmi e-book sada</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Odaberi Svoj Paket</h2>
+            <p class="section-subtitle">Tri paketa prilagođena vašim potrebama – od početnika do eksperta</p>
+            
+            <div class="pricing-cards">
+                <!-- Osnovni Paket -->
+                <div class="pricing-card">
+                    <div class="pricing-badge">POČETNIK</div>
+                    <h3 class="pricing-title">Osnovni Paket</h3>
+                    <div class="pricing-price"><span class="pricing-currency">€</span>19.99</div>
+                    <p class="pricing-period">Jednokratna kupnja</p>
+                    
+                    <ul class="pricing-features">
+                        <li>6 poglavlja s osnovama prompt inženjeringa</li>
+                        <li>50+ gotovih copy-paste promptova</li>
+                        <li>Struktura savršenog prompta</li>
+                        <li>Ključni principi i greške za izbjegavanje</li>
+                        <li>Promptovi za copywriting i marketing</li>
+                        <li>Promptovi za sadržaj i poslovanje</li>
+                    </ul>
+                    
+                    <div class="payment-buttons">
+                        <a href="STRIPE_PAYMENT_LINK_OSNOVNI" class="payment-button stripe-button" target="_blank">
+                            💳 Stripe
+                        </a>
+                        <a href="PAYPAL_PAYMENT_LINK_OSNOVNI" class="payment-button paypal-button" target="_blank">
+                            🅿️ PayPal
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PRO Paket -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">PREPORUČENO</div>
+                    <h3 class="pricing-title">PRO Paket</h3>
+                    <div class="pricing-price"><span class="pricing-currency">€</span>49.99</div>
+                    <p class="pricing-period">Jednokratna kupnja</p>
+                    
+                    <ul class="pricing-features">
+                        <li>Sve iz Osnovnog paketa</li>
+                        <li>Napredni prompt predlošci za 6 industrija</li>
+                        <li>5 video vodiča s detaljnim skriptama</li>
+                        <li>Cheat Sheet – brzi pregled svih tehnika</li>
+                        <li>Predlošci za automatizaciju workflow-a</li>
+                        <li>Chain Prompting, Role Prompting, Few-shot Learning</li>
+                    </ul>
+                    
+                    <div class="payment-buttons">
+                        <a href="STRIPE_PAYMENT_LINK_PRO" class="payment-button stripe-button" target="_blank">
+                            💳 Stripe
+                        </a>
+                        <a href="PAYPAL_PAYMENT_LINK_PRO" class="payment-button paypal-button" target="_blank">
+                            🅿️ PayPal
+                        </a>
+                    </div>
+                </div>
+
+                <!-- VIP/ULTIMATE Paket -->
+                <div class="pricing-card">
+                    <div class="pricing-badge">EKSKLUZIVNO</div>
+                    <h3 class="pricing-title">VIP/ULTIMATE Paket</h3>
+                    <div class="pricing-price"><span class="pricing-currency">€</span>99.99</div>
+                    <p class="pricing-period">Jednokratna kupnja</p>
+                    
+                    <ul class="pricing-features">
+                        <li>Sve iz PRO paketa</li>
+                        <li>Kompletni sustav AI automatizacije poslovanja</li>
+                        <li>Personalizirani prompt sustavi za različite poslovne modele</li>
+                        <li>Napredne strategije za monetizaciju AI vještina</li>
+                        <li>Template za pokretanje AI consulting biznisa</li>
+                        <li>Vodič za izgradnju AI-powered proizvoda i usluga</li>
+                    </ul>
+                    
+                    <div class="payment-buttons">
+                        <a href="STRIPE_PAYMENT_LINK_VIP" class="payment-button stripe-button" target="_blank">
+                            💳 Stripe
+                        </a>
+                        <a href="PAYPAL_PAYMENT_LINK_VIP" class="payment-button paypal-button" target="_blank">
+                            🅿️ PayPal
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Setup Notice -->
+            <div class="setup-notice">
+                <h3>⚙️ Kako Postaviti Plaćanja?</h3>
+                <p>Ova stranica je spremna za integraciju s pravim payment sustavima. Trebate samo zamijeniti placeholder-e sa vašim payment linkovima.</p>
+                <p>Detaljne upute za postavljanje Stripe i PayPal računa, te kako kreirati payment linkove, pronađite u datoteci <code>upute-za-objavljivanje.md</code>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container" style="text-align: center; margin-bottom: 2rem;">
+            <p>&copy; 2026 AI Promptovi. Sva prava zadržana.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">Digitalni proizvod dostupan odmah nakon plaćanja.</p>
+        </div>
+        <div class="footer-bottom">
+            <p style="font-size: 0.85rem;">Autor: Manus AI | Verzija: 2.0 - Real Payment Integration</p>
+        </div>
+    </footer>
+
+    <script>
+        // Payment link placeholders that need to be replaced:
+        // 1. STRIPE_PAYMENT_LINK_OSNOVNI - Replace with your Stripe payment link for Basic package
+        // 2. STRIPE_PAYMENT_LINK_PRO - Replace with your Stripe payment link for PRO package
+        // 3. STRIPE_PAYMENT_LINK_VIP - Replace with your Stripe payment link for VIP package
+        // 4. PAYPAL_PAYMENT_LINK_OSNOVNI - Replace with your PayPal payment link for Basic package
+        // 5. PAYPAL_PAYMENT_LINK_PRO - Replace with your PayPal payment link for PRO package
+        // 6. PAYPAL_PAYMENT_LINK_VIP - Replace with your PayPal payment link for VIP package
+
+        console.log('Payment links are configured as placeholders. Replace them with actual payment links from Stripe and PayPal.');
+    </script>
+</body>
+</html>

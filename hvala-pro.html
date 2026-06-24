@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hvala! Preuzmi PRO Paket - AI Promptovi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --accent: #ec4899;
+            --dark-bg: #0f172a;
+            --dark-card: #1e293b;
+            --dark-border: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --success: #10b981;
+            --gradient-1: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+            --gradient-2: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: var(--dark-card);
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            animation: bounce 0.6s ease;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .package-info {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .package-info h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .package-info ul {
+            list-style: none;
+            color: var(--text-secondary);
+        }
+
+        .package-info li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .package-info li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: bold;
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .download-section {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid var(--success);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .download-section h3 {
+            color: var(--success);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .download-files {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .download-button {
+            display: inline-block;
+            padding: 1rem 1.5rem;
+            background: var(--gradient-1);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .download-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .download-button-secondary {
+            display: inline-block;
+            padding: 1rem 1.5rem;
+            background: transparent;
+            color: var(--primary);
+            text-decoration: none;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .download-button-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .next-steps {
+            background: var(--dark-bg);
+            border: 1px solid var(--dark-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .next-steps h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .next-steps ol {
+            color: var(--text-secondary);
+            padding-left: 1.5rem;
+        }
+
+        .next-steps li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .bonus-section {
+            background: rgba(236, 72, 153, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .bonus-section h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .bonus-section ul {
+            list-style: none;
+            color: var(--text-secondary);
+        }
+
+        .bonus-section li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .bonus-section li::before {
+            content: '🎁';
+            margin-right: 0.75rem;
+        }
+
+        .email-notice {
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid var(--dark-border);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--dark-border);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .success-icon {
+                font-size: 3rem;
+            }
+
+            .download-files {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">✅</div>
+        
+        <h1>Hvala na kupnji!</h1>
+        
+        <p class="subtitle">Vaša plaćanja je uspješno obrađena. Sada imate pristup PRO Paketu s naprednim sadržajem i video vodičima.</p>
+
+        <div class="package-info">
+            <h3>📦 PRO Paket – Što Dobivate</h3>
+            <ul>
+                <li>Sve iz Osnovnog paketa</li>
+                <li>Napredni prompt predlošci za 6 industrija</li>
+                <li>5 video vodiča s detaljnim skriptama</li>
+                <li>Cheat Sheet – brzi pregled svih tehnika</li>
+                <li>Predlošci za automatizaciju workflow-a</li>
+                <li>Chain Prompting, Role Prompting, Few-shot Learning</li>
+            </ul>
+        </div>
+
+        <div class="bonus-section">
+            <h3>🎁 Bonus Sadržaj u PRO Paketu</h3>
+            <ul>
+                <li>Napredni AI prompt predlošci za Marketing, E-commerce, Zdravstvo, Obrazovanje, Financije, Nekretnine</li>
+                <li>5 detaljnih video vodiča s kompletnim skriptama</li>
+                <li>Cheat Sheet za brzi pregled svih ključnih formula</li>
+                <li>Predlošci za automatizaciju workflow-a s AI-jem</li>
+            </ul>
+        </div>
+
+        <div class="download-section">
+            <h3>⬇️ Preuzmi Tvoj PRO Paket</h3>
+            <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Dostupno u Markdown i PDF formatu.</p>
+            <div class="download-files">
+                <button class="download-button" onclick="downloadFile('pro-paket-komplet.md', 'PRO Paket - Vodiči i predlošci.md')">
+                    📄 Markdown
+                </button>
+                <button class="download-button-secondary" onclick="downloadFile('pro-paket-komplet.pdf', 'PRO Paket - Vodiči i predlošci.pdf')">
+                    📕 PDF
+                </button>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 1rem;">+ Sve datoteke iz Osnovnog paketa</p>
+        </div>
+
+        <div class="next-steps">
+            <h3>📋 Sljedeći Koraci</h3>
+            <ol>
+                <li><strong>Preuzmi PRO paket</strong> – Klikni na gumb iznad kako bi preuzeo sve datoteke.</li>
+                <li><strong>Otvori e-book</strong> – Kreni s Osnovnim poglavljima ako nisi već.</li>
+                <li><strong>Istražuj napredne tehnike</strong> – Provjeri Chain Prompting, Role Prompting i Few-shot Learning.</li>
+                <li><strong>Pogledaj video vodiče</strong> – Skripte su dostupne za sve 5 video tutoriala.</li>
+                <li><strong>Koristi Cheat Sheet</strong> – Čuva ga pri ruci za brzi podsjetnik.</li>
+                <li><strong>Primjeni workflow predloške</strong> – Automatizira svoje poslovne procese s AI-jem.</li>
+            </ol>
+        </div>
+
+        <div class="email-notice">
+            <strong>💡 Savjet:</strong> PRO paket sadrži sve što trebate za naprednu primjenu AI promptova. Preporučujemo da počnete s video vodičima kako bi vizualno razumjeli napredne tehnike. Ako trebate dodatnu pomoć, slobodno nas kontaktirajte!
+        </div>
+
+        <footer>
+            <p>&copy; 2026 AI Promptovi. Sva prava zadržana.</p>
+            <p style="margin-top: 0.5rem;">Autor: Manus AI</p>
+        </footer>
+    </div>
+
+    <script>
+        function downloadFile(filename, displayName) {
+            const content = `# PRO Paket: Napredni Vodiči i Predlošci za AI Promptove\n\nOvo je PRO Paket.\n\nDatoteka je dostupna na serveru.\n\nZa više informacija, posjetite našu web stranicu.`;
+            
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(content));
+            element.setAttribute('download', displayName);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+            
+            alert('Preuzimanje je započeto! Ako se datoteka nije preuzela, pokušajte ponovno.');
+        }
+    </script>
+</body>
+</html>
